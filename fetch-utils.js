@@ -52,12 +52,12 @@ export async function getTodos() {
 
 
 
-export async function completeTodo(id) {
+export async function completeTodo(id) { //where is id being pulled from on this line 
     // find the and update (set complete to true), the todo that matches the correct id
     const response = await client
         .from('todos')
-        .update({ complete: true })
-        .match({ id });
+        .update({ complete: true }) //takes column of "complete" in sb and upddates it to true
+        .match({ id }); // id needs to match id in sb 
 
     return checkError(response);
 }

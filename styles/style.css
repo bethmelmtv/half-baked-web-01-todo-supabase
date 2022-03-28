@@ -108,20 +108,68 @@ footer {
     top: 90px;
 }
 
-.auth-main {
+.auth-main {  /*what does this do*/ 
     display: flex;
     flex-direction: row;
 }
 
-.auth-container {
+.auth-container {  /*what does this do*/ 
     margin: 10px;
 }
 
-.auth-container form {
+.auth-container form {  /*what does this do*/ 
     display: flex;
     flex-direction: column;
 }
 
-.auth-container button {
+.auth-container button { /*what does this do*/ 
     margin: 10px;
+}
+
+
+.loading-spinner {
+    background-color:rgba(0, 0, 0, 0.45);
+    font-size: 5rem;
+    color:white;
+    position: fixed;
+    width: 100%;
+    height:100%;
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+}
+
+.invisible {
+    display: none /*hides item*/ 
+}
+
+#loading-text {
+    animation: pulse 1s infinite ease-in-out;  /*what does this do */ 
+}
+
+
+.todo-item {
+    margin: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.todo-item:hover {
+    background-color: green;
+}
+
+.done {
+    text-decoration:line-through;
+    cursor: not-allowed;
+    background-color: azure;
+}
+
+.delete-button {
+    background-color: brown;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
 }
