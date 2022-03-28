@@ -48,41 +48,32 @@ async function displayTodos() {
 
     toggleLoadingSpinner(); //this shows the load item 
 
-    todosEl.textContent = ''; //empties out container// not sure why 
+    todosEl.textContent = ''; //empties out container// this is where want to put the new todos// were clearing out to avoid duplicates 
 
+    const todoList = await getTodos();
 
-    const todoList = await getTodos(); // this line gets to dos saved from users supabase 
-    
-    // display the list of todos
-
+    // create a div and a p tag
     for (let todoItem of todoList) {
-        const todoItemEl = document.createElement('p');
-        
-        todoItemEl.classList.add('todo-item');
-        todoItemEl.textContent = `${todoItem.todo}`; //what does this line do
-
-        if (todoItem.complete === true) { // .complete is coming from supabase?
-            todoItemEl.classList.add('done');//were adding class to the whole div element
-        } else {
-            todoItemEl.addEventListener('click', async () => {
-
-                await completeTodo(todoItem.id); //where are we pulling id from here 
-
-                displayTodos();
-            });
-
-    // be sure to give each todo an event listener
-//
-    // on click, complete that todo
-
-        }
-
-        todosEl.append(todoItemEl);
+        // console.log(todoItem);
+        const newToDo = renderTodo(todoItem);
+        // console.log(newToDo);
+        // be sure to give each todo an event listener
+        newToDo.addEventListener('click', async () => {
+            //   on click, complete that todo
+            await completeTodo(todoItem.id);
+            displayTodos(); // 
+        });
+        todosEl.append(newToDo);
+        // console.log(todosEl);
     }
+
 
     toggleLoadingSpinner();
 
 }
+
+
+
 
 // add an on load listener that fetches and displays todos on load
 
